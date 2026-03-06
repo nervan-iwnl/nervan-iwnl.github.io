@@ -6,12 +6,16 @@
   <title>Иван Агеев — Resume</title>
   <style>
     :root {
-      --bg: #0f1115;
-      --card: #171a21;
-      --text: #e8ecf1;
-      --muted: #a7b0bd;
-      --accent: #7aa2ff;
-      --border: #262b36;
+      --bg: #0b0f14;
+      --bg-secondary: #111827;
+      --card: rgba(20, 27, 39, 0.88);
+      --card-hover: rgba(24, 33, 48, 0.96);
+      --text: #e5ecf5;
+      --muted: #9aa8bc;
+      --accent: #74a7ff;
+      --accent-strong: #93c5fd;
+      --border: rgba(148, 163, 184, 0.14);
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
     }
 
     * {
@@ -24,34 +28,54 @@
 
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--bg);
+      font-family: Inter, Arial, Helvetica, sans-serif;
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.65;
+      background:
+        radial-gradient(circle at top left, rgba(116, 167, 255, 0.10), transparent 30%),
+        radial-gradient(circle at top right, rgba(147, 197, 253, 0.08), transparent 25%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-secondary) 100%);
     }
 
     .container {
-      max-width: 900px;
+      max-width: 980px;
       margin: 0 auto;
-      padding: 40px 20px 60px;
+      padding: 48px 20px 64px;
     }
 
     .hero {
-      margin-bottom: 32px;
-      padding: 28px;
+      position: relative;
+      margin-bottom: 28px;
+      padding: 34px 32px;
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 16px;
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 24px;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(116, 167, 255, 0.28), transparent 35%, rgba(147, 197, 253, 0.18));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+              mask-composite: exclude;
+      pointer-events: none;
     }
 
     h1 {
       margin: 0 0 8px;
-      font-size: 36px;
-      line-height: 1.2;
+      font-size: 40px;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
     }
 
     .subtitle {
-      margin: 0 0 18px;
+      margin: 0;
       color: var(--muted);
       font-size: 18px;
     }
@@ -59,102 +83,206 @@
     .contacts {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px 20px;
-      margin-top: 16px;
+      gap: 12px;
+      margin-top: 24px;
     }
 
-    .contacts a,
-    .project-link {
-      color: var(--accent);
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      color: var(--text);
       text-decoration: none;
+      transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
     }
 
-    .contacts a:hover,
-    .project-link:hover {
-      text-decoration: underline;
+    .contact-link:hover {
+      transform: translateY(-1px);
+      border-color: rgba(116, 167, 255, 0.45);
+      background: rgba(116, 167, 255, 0.08);
+    }
+
+    .contact-link svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+      flex-shrink: 0;
+      color: var(--accent-strong);
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .main-column,
+    .side-column {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
     }
 
     .section {
-      margin-bottom: 24px;
-      padding: 24px 28px;
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 16px;
+      border-radius: 22px;
+      padding: 24px 26px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+    }
+
+    .section:hover {
+      transform: translateY(-2px);
+      background: var(--card-hover);
+      border-color: rgba(116, 167, 255, 0.22);
     }
 
     h2 {
       margin: 0 0 16px;
-      font-size: 22px;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 10px;
+      font-size: 20px;
+      letter-spacing: -0.01em;
+    }
+
+    h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
     }
 
     p {
       margin: 0;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
-
-    .item + .item {
-      margin-top: 18px;
-    }
-
-    .label {
-      font-weight: bold;
-      display: block;
-      margin-bottom: 6px;
-    }
-
-    ul {
-      margin: 10px 0 0 20px;
-      padding: 0;
-    }
-
-    li + li {
-      margin-top: 6px;
+      color: var(--text);
     }
 
     .muted {
       color: var(--muted);
     }
 
-    .project-title {
-      margin: 0 0 8px;
-      font-size: 20px;
+    .skills-grid {
+      display: grid;
+      gap: 16px;
     }
 
-    .tagline {
+    .skill-group-title {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: var(--accent-strong);
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 11px;
+      border-radius: 999px;
+      font-size: 14px;
+      color: #dbe8ff;
+      background: rgba(116, 167, 255, 0.10);
+      border: 1px solid rgba(116, 167, 255, 0.18);
+    }
+
+    .project-card {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid rgba(148, 163, 184, 0.10);
+    }
+
+    .project-meta {
+      margin-bottom: 12px;
       color: var(--muted);
-      margin-bottom: 10px;
     }
 
-    footer {
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+      color: var(--accent-strong);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .project-link:hover {
+      text-decoration: underline;
+    }
+
+    ul {
+      margin: 14px 0 0 18px;
+      padding: 0;
+    }
+
+    li + li {
+      margin-top: 8px;
+    }
+
+    .achievements-list li::marker,
+    .project-card li::marker {
+      color: var(--accent);
+    }
+
+    .edu-item + .edu-item {
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(148, 163, 184, 0.10);
+    }
+
+    .edu-place {
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .footer {
       text-align: center;
       color: var(--muted);
       font-size: 14px;
-      margin-top: 24px;
+      margin-top: 28px;
     }
 
-    @media (max-width: 700px) {
-      .grid {
+    @media (max-width: 860px) {
+      .layout {
         grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        padding: 24px 14px 40px;
+      }
+
+      .hero,
+      .section {
+        padding: 20px;
+        border-radius: 18px;
       }
 
       h1 {
-        font-size: 28px;
+        font-size: 30px;
       }
 
       .subtitle {
         font-size: 16px;
       }
 
-      .hero,
-      .section {
-        padding: 20px;
+      .contacts {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .contact-link {
+        justify-content: flex-start;
       }
     }
   </style>
@@ -166,97 +294,140 @@
       <p class="subtitle">Junior Backend Developer / C++ Developer / Python Developer</p>
 
       <div class="contacts">
-        <a href="mailto:ageev.vanyusha@gmail.com">ageev.vanyusha@gmail.com</a>
-        <a href="https://t.me/nervantus" target="_blank" rel="noopener noreferrer">Telegram</a>
-        <a href="https://github.com/nervan-iwnl" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a class="contact-link" href="mailto:ageev.vanyusha@gmail.com">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4.24-8 5-8-5V6l8 5 8-5Z"/>
+          </svg>
+          <span>ageev.vanyusha@gmail.com</span>
+        </a>
+
+        <a class="contact-link" href="https://t.me/nervantus" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M21.944 4.666a1 1 0 0 0-1.217-1.267L2.97 8.782a1 1 0 0 0 .06 1.93l4.7 1.46 1.797 5.753a1 1 0 0 0 1.79.25l2.505-3.438 4.525 3.314a1 1 0 0 0 1.573-.61l2.024-12.775ZM9.36 11.72l8.57-5.36-7.075 6.86a1 1 0 0 0-.264.457l-.783 2.62-.448-1.434a1 1 0 0 0-.663-.666L5.83 13.31l3.53-1.59Z"/>
+          </svg>
+          <span>Telegram</span>
+        </a>
+
+        <a class="contact-link" href="https://github.com/nervan-iwnl" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 .5C5.65.5.5 5.65.5 12.02c0 5.1 3.3 9.43 7.88 10.96.58.1.79-.25.79-.56v-2.17c-3.2.7-3.88-1.38-3.88-1.38-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.78 1.2 1.78 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.72-1.55-2.56-.3-5.25-1.28-5.25-5.71 0-1.26.45-2.3 1.19-3.11-.12-.3-.52-1.52.11-3.18 0 0 .97-.31 3.19 1.19a10.9 10.9 0 0 1 5.82 0c2.22-1.5 3.19-1.19 3.19-1.19.63 1.66.23 2.88.11 3.18.74.81 1.19 1.85 1.19 3.11 0 4.44-2.69 5.41-5.26 5.7.41.35.78 1.05.78 2.12v3.14c0 .31.21.67.8.56A11.53 11.53 0 0 0 23.5 12.02C23.5 5.65 18.35.5 12 .5Z"/>
+          </svg>
+          <span>GitHub</span>
+        </a>
       </div>
     </section>
 
-    <section class="section">
-      <h2>О себе</h2>
-      <p>
-        Студент и начинающий backend-разработчик. Основной стек — C++ и Python.
-        Интересуюсь серверной разработкой, сетевыми приложениями, алгоритмами,
-        конкурентностью и проектированием backend-систем. Ищу стажировку или
-        junior-позицию, где смогу применять текущие навыки на реальных задачах
-        и расти как инженер.
-      </p>
-    </section>
+    <div class="layout">
+      <div class="main-column">
+        <section class="section">
+          <h2>О себе</h2>
+          <p>
+            Студент и начинающий backend-разработчик. Основной стек — C++ и Python.
+            Интересуюсь серверной разработкой, сетевыми приложениями, алгоритмами,
+            конкурентностью и проектированием backend-систем. Ищу стажировку или
+            junior-позицию, где смогу применять текущие навыки на реальных задачах
+            и расти как инженер.
+          </p>
+        </section>
 
-    <section class="section">
-      <h2>Навыки</h2>
-      <div class="grid">
-        <div class="item">
-          <span class="label">Языки</span>
-          <p>Python, C++</p>
-        </div>
-        <div class="item">
-          <span class="label">Backend / Systems</span>
-          <p>TCP/IP, клиент-серверные приложения, конкурентность в C++</p>
-        </div>
-        <div class="item">
-          <span class="label">Базы данных</span>
-          <p>PostgreSQL</p>
-        </div>
-        <div class="item">
-          <span class="label">Инструменты</span>
-          <p>Linux, WSL, Git, GitHub</p>
-        </div>
-        <div class="item">
-          <span class="label">Дополнительно</span>
-          <p>STL, алгоритмы и структуры данных, Go</p>
-        </div>
+        <section class="section">
+          <h2>Проекты</h2>
+
+          <article class="project-card">
+            <h3>KVStore</h3>
+            <p class="project-meta">
+              Собственная реализация серверного key-value хранилища на C++ с клиент-серверным взаимодействием по TCP.
+            </p>
+
+            <a class="project-link" href="https://github.com/nervan-iwnl/KVStore" target="_blank" rel="noopener noreferrer">
+              Открыть репозиторий
+            </a>
+
+            <ul>
+              <li>Разработал модульную архитектуру команд и серверной логики</li>
+              <li>Реализовал хранение пар ключ-значение и обработку запросов по TCP</li>
+              <li>Добавил поддержку TTL для ключей</li>
+              <li>Прорабатывал расширяемый протокол взаимодействия между клиентом и сервером</li>
+              <li>Использовал C++17/20, STL, Linux sockets, concurrency primitives</li>
+            </ul>
+          </article>
+        </section>
       </div>
-    </section>
 
-    <section class="section">
-      <h2>Проекты</h2>
+      <div class="side-column">
+        <section class="section">
+          <h2>Навыки</h2>
 
-      <article>
-        <h3 class="project-title">KVStore</h3>
-        <p class="tagline">
-          Собственная реализация серверного key-value хранилища на C++ с клиент-серверным взаимодействием по TCP.
-        </p>
-        <p>
-          <a class="project-link" href="https://github.com/nervan-iwnl/KVStore" target="_blank" rel="noopener noreferrer">
-            GitHub Repository
-          </a>
-        </p>
-        <ul>
-          <li>Разработал модульную архитектуру команд и серверной логики</li>
-          <li>Реализовал хранение пар ключ-значение и обработку запросов по TCP</li>
-          <li>Добавил поддержку TTL для ключей</li>
-          <li>Прорабатывал расширяемый протокол взаимодействия между клиентом и сервером</li>
-          <li>Использовал C++17/20, STL, Linux sockets, concurrency primitives</li>
-        </ul>
-      </article>
-    </section>
+          <div class="skills-grid">
+            <div>
+              <span class="skill-group-title">Языки</span>
+              <div class="chips">
+                <span class="chip">Python</span>
+                <span class="chip">C++</span>
+                <span class="chip">Go</span>
+              </div>
+            </div>
 
-    <section class="section">
-      <h2>Достижения</h2>
-      <ul>
-        <li>Призер Кубка МИФИ (2023)</li>
-        <li>Победитель Кубка МИФИ (2024)</li>
-        <li>Участник 1/4 ICPC (2023)</li>
-        <li>Финалист M*CTF (2022)</li>
-        <li>Победитель RuCode (2023)</li>
-        <li>Финалист MTS True Tech Champ (2023)</li>
-      </ul>
-    </section>
+            <div>
+              <span class="skill-group-title">Backend / Systems</span>
+              <div class="chips">
+                <span class="chip">TCP/IP</span>
+                <span class="chip">Client-Server</span>
+                <span class="chip">Concurrency</span>
+              </div>
+            </div>
 
-    <section class="section">
-      <h2>Образование</h2>
-      <div class="item">
-        <span class="label">НИЯУ МИФИ</span>
-        <p>Анализ и обработка данных (экстремальное программирование), 2022–2025</p>
+            <div>
+              <span class="skill-group-title">Databases</span>
+              <div class="chips">
+                <span class="chip">PostgreSQL</span>
+              </div>
+            </div>
+
+            <div>
+              <span class="skill-group-title">Tools</span>
+              <div class="chips">
+                <span class="chip">Linux</span>
+                <span class="chip">WSL</span>
+                <span class="chip">Git</span>
+                <span class="chip">GitHub</span>
+                <span class="chip">STL</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>Достижения</h2>
+          <ul class="achievements-list">
+            <li>Призер Кубка МИФИ (2023)</li>
+            <li>Победитель Кубка МИФИ (2024)</li>
+            <li>Участник 1/4 ICPC (2023)</li>
+            <li>Финалист M*CTF (2022)</li>
+            <li>Победитель RuCode (2023)</li>
+            <li>Финалист MTS True Tech Champ (2023)</li>
+          </ul>
+        </section>
+
+        <section class="section">
+          <h2>Образование</h2>
+
+          <div class="edu-item">
+            <div class="edu-place">НИЯУ МИФИ</div>
+            <div class="muted">Анализ и обработка данных (экстремальное программирование)</div>
+            <div class="muted">2022–2025</div>
+          </div>
+
+          <div class="edu-item">
+            <div class="edu-place">ДИТИ НИЯУ МИФИ</div>
+            <div class="muted">Информационные системы и технологии</div>
+            <div class="muted">2025–2027</div>
+          </div>
+        </section>
       </div>
-      <div class="item">
-        <span class="label">ДИТИ НИЯУ МИФИ</span>
-        <p>Информационные системы и технологии, 2025–2027</p>
-      </div>
-    </section>
+    </div>
 
-    <footer>
+    <footer class="footer">
       © 2026 Иван Агеев
     </footer>
   </main>
