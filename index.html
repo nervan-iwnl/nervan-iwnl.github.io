@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Иван Агеев — Resume</title>
+  <style>
+    :root {
+      --bg: #0f1115;
+      --card: #171a21;
+      --text: #e8ecf1;
+      --muted: #a7b0bd;
+      --accent: #7aa2ff;
+      --border: #262b36;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px 60px;
+    }
+
+    .hero {
+      margin-bottom: 32px;
+      padding: 28px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 36px;
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .contacts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 20px;
+      margin-top: 16px;
+    }
+
+    .contacts a,
+    .project-link {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .contacts a:hover,
+    .project-link:hover {
+      text-decoration: underline;
+    }
+
+    .section {
+      margin-bottom: 24px;
+      padding: 24px 28px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+
+    h2 {
+      margin: 0 0 16px;
+      font-size: 22px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 10px;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .item + .item {
+      margin-top: 18px;
+    }
+
+    .label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    ul {
+      margin: 10px 0 0 20px;
+      padding: 0;
+    }
+
+    li + li {
+      margin-top: 6px;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .project-title {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }
+
+    .tagline {
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 24px;
+    }
+
+    @media (max-width: 700px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      .subtitle {
+        font-size: 16px;
+      }
+
+      .hero,
+      .section {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <section class="hero">
+      <h1>Агеев Иван Анатольевич</h1>
+      <p class="subtitle">Junior Backend Developer / C++ Developer / Python Developer</p>
+
+      <div class="contacts">
+        <a href="mailto:ageev.vanyusha@gmail.com">ageev.vanyusha@gmail.com</a>
+        <a href="https://t.me/nervantus" target="_blank" rel="noopener noreferrer">Telegram</a>
+        <a href="https://github.com/nervan-iwnl" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>О себе</h2>
+      <p>
+        Студент и начинающий backend-разработчик. Основной стек — C++ и Python.
+        Интересуюсь серверной разработкой, сетевыми приложениями, алгоритмами,
+        конкурентностью и проектированием backend-систем. Ищу стажировку или
+        junior-позицию, где смогу применять текущие навыки на реальных задачах
+        и расти как инженер.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>Навыки</h2>
+      <div class="grid">
+        <div class="item">
+          <span class="label">Языки</span>
+          <p>Python, C++</p>
+        </div>
+        <div class="item">
+          <span class="label">Backend / Systems</span>
+          <p>TCP/IP, клиент-серверные приложения, конкурентность в C++</p>
+        </div>
+        <div class="item">
+          <span class="label">Базы данных</span>
+          <p>PostgreSQL</p>
+        </div>
+        <div class="item">
+          <span class="label">Инструменты</span>
+          <p>Linux, WSL, Git, GitHub</p>
+        </div>
+        <div class="item">
+          <span class="label">Дополнительно</span>
+          <p>STL, алгоритмы и структуры данных, Go</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Проекты</h2>
+
+      <article>
+        <h3 class="project-title">KVStore</h3>
+        <p class="tagline">
+          Собственная реализация серверного key-value хранилища на C++ с клиент-серверным взаимодействием по TCP.
+        </p>
+        <p>
+          <a class="project-link" href="https://github.com/nervan-iwnl/KVStore" target="_blank" rel="noopener noreferrer">
+            GitHub Repository
+          </a>
+        </p>
+        <ul>
+          <li>Разработал модульную архитектуру команд и серверной логики</li>
+          <li>Реализовал хранение пар ключ-значение и обработку запросов по TCP</li>
+          <li>Добавил поддержку TTL для ключей</li>
+          <li>Прорабатывал расширяемый протокол взаимодействия между клиентом и сервером</li>
+          <li>Использовал C++17/20, STL, Linux sockets, concurrency primitives</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="section">
+      <h2>Достижения</h2>
+      <ul>
+        <li>Призер Кубка МИФИ (2023)</li>
+        <li>Победитель Кубка МИФИ (2024)</li>
+        <li>Участник 1/4 ICPC (2023)</li>
+        <li>Финалист M*CTF (2022)</li>
+        <li>Победитель RuCode (2023)</li>
+        <li>Финалист MTS True Tech Champ (2023)</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Образование</h2>
+      <div class="item">
+        <span class="label">НИЯУ МИФИ</span>
+        <p>Анализ и обработка данных (экстремальное программирование), 2022–2025</p>
+      </div>
+      <div class="item">
+        <span class="label">ДИТИ НИЯУ МИФИ</span>
+        <p>Информационные системы и технологии, 2025–2027</p>
+      </div>
+    </section>
+
+    <footer>
+      © 2026 Иван Агеев
+    </footer>
+  </main>
+</body>
+</html>
